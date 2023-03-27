@@ -1,20 +1,17 @@
 name: Repository Size
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
-  repository-size:
+  calculate_size:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Display branch name
-        run: echo "Current branch: ${{ github.head_ref }}"
-      - name: Check repository size
-        run: du -skh --exclude=".git" .
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Display branch name
+      run: echo "Branch: ${GITHUB_REF##*/}"
+
+    - name: Calculate repository size excluding .git
+      run: du -skh --exclude=".git"
