@@ -15,6 +15,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Display branch name
-        run: echo "Current branch: ${{ github.ref }}"
+        run: echo "Current branch: ${{ github.head_ref }}"
       - name: Check repository size
         run: du -skh --exclude=".git" .
