@@ -6,7 +6,6 @@ on:
 
 jobs:
   show_time:
-    runs-on: ubuntu-latest
     steps:
       - name: Show the time
         run: date
