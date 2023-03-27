@@ -1,6 +1,6 @@
 name: Repository Size
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   calculate_size:
@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Display branch name
-      run: echo "Branch: ${{ github.repository }}"
+      run: echo "${{ github.repository }}"
 
     - name: Calculate repository size excluding .git
       run: du -skh --exclude=".git"
